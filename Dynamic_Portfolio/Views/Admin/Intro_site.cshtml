@@ -1,0 +1,40 @@
+﻿<div class="Edit_main_div">
+    <div class="Edit_menu">
+        <a asp-controller="Admin" asp-action="Edit_Site"><button>Project's</button></a><br>
+        <a asp-controller="Admin" asp-action="Skills_site"><button>Skill's</button></a><br>
+        <a asp-controller="Admin" asp-action="Edit_Site"><button>Contact</button></a><br>
+        <a asp-controller="Admin" asp-action="Edit_Site"><button>About</button></a><br>
+        <div class="mini_Detail_box">
+            <p>Clicking on the headings "Project," "Skills," "Contact," and "About" opens new tabs with relevant information, offering a comprehensive overview. These tabs provide insights into projects, expertise, and contact details, fostering seamless interaction and understanding. Users can explore project achievements, skill proficiency, and ways to get in touch, enhancing engagement and communication.</p>
+        </div>
+    </div>
+    <div class="Edit_items" id="intro">
+        <label>Hello!... Vignesh</label>
+        <p>
+            <b style="color:green; text-shadow: 1px 1px 1px yellow;">Create:</b>
+            This operation, commonly known as insertion, plays a pivotal role in data management systems, facilitating the addition of new data or records. For instance, within an employee information database, creating a new entry encompasses inputting essential details such as the employee's name, ID, position, and other pertinent information. The process is integral to maintaining an up-to-date and comprehensive database, ensuring accuracy and completeness. Typically, this operation involves executing SQL INSERT statements or utilizing application interfaces to add new records seamlessly. By effectively performing this operation, organizations can continuously update their databases with relevant information, supporting informed decision-making and streamlined operations.<br><br>
+            <b style="color:yellow; text-shadow: 1px 1px 1px green;"> Update:</b> Updating is a crucial operation that enables the modification of existing data within a database or system, ensuring information accuracy and relevance. In our employee database scenario, when an employee undergoes a name change due to marriage or any other reason, the update operation is employed to reflect the updated last name. This operation is essential for maintaining data integrity and reflecting real-time changes in the system. Typically, updates involve executing SQL UPDATE statements or utilizing application interfaces to modify specific records. By efficiently executing update operations, organizations can ensure that their databases remain current and reflective of the latest information, supporting decision-making processes and organizational efficiency.<br><br>
+            <b style="color:red; text-shadow: 1px 1px 1px white ;"> Delete:</b>
+            Deleting is a fundamental operation within database management systems, facilitating the removal of obsolete or redundant data. In scenarios such as an employee's departure from the company, the delete operation is essential to maintain data accuracy and streamline database functionality. Through the delete operation, the employee's record is permanently removed from the database, ensuring it reflects the current state of the organization. This operation is crucial for data hygiene and compliance with privacy regulations, as it eliminates unnecessary data that could pose security risks or clutter the database. Typically, delete operations involve executing SQL DELETE statements or utilizing application interfaces to remove specific records. By effectively implementing delete operations, organizations can uphold data integrity, optimize database performance, and mitigate potential risks associated with outdated or irrelevant data.
+        </p>
+        <div class="intro_thanks">
+            <span>Thanks for  reading....</span>
+        </div>
+    </div>
+    <div class="back_button">
+        <a onclick="clearHistory()" asp-controller="Admin" asp-action="Logout" title="are you sure click to logout ?..."><i class="bi bi-box-arrow-left"></i></a> <label style="color:white; margin-left:10px;">logout...!</label>
+    </div>
+</div>
+<!-- history delete scripts-->
+<script>
+    function clearHistory() {
+
+       
+        window.history.pushState(null, null, window.location.href);
+        window.history.pushState(null, null, window.location.href);
+        window.history.replaceState(null, null, window.location.origin);
+        window.onpopstate = function () {
+            window.history.go(1);
+        };
+    }
+</script>

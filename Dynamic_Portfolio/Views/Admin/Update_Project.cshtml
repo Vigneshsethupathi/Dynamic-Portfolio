@@ -1,0 +1,97 @@
+﻿@using Portfolio.Models
+@model Project
+    <div class="upload_project_details">
+    <table class="upload_project_table">
+        <form method="post" enctype="multipart/form-data">
+        <tr>
+            <th><label asp-for="@Model.Project_Tittle"></label></th>
+            <th><i class="bi bi-chevron-double-right"></i></th>
+            <td><input class="project_input" asp-for="@Model.Project_Tittle" required autocomplete="off" /></td>
+        </tr>
+        <tr>
+            <th><label asp-for="@Model.Domain_Name"></label></th>
+            <th><i class="bi bi-chevron-double-right"></i></th>
+            <td><input class="project_input" asp-for="@Model.Domain_Name" autocomplete="off" required /></td>
+        </tr>
+        <tr style="height:100px">
+            <th><label asp-for="@Model.Project_LOGO"></label></th>
+            <th><i class="bi bi-chevron-double-right"></i></th>
+            <td><input type="file" name="files" id="imageInput" accept="image/*" autocomplete="off" class="project_input" style=" width:50%; height:40px" ></td>
+        </tr>
+        <tr>
+
+            <th><label asp-for="@Model.Using_Languages"></label></th>
+            <th><i class="bi bi-chevron-double-right"></i></th>
+            <td><input class="project_input" asp-for="@Model.Using_Languages" required autocomplete="off" /></td>
+        </tr>
+        <tr>
+            <th><label asp-for="@Model.Using_Framwork"></label></th>
+            <th><i class="bi bi-chevron-double-right"></i></th>
+            <td><input class="project_input" asp-for="@Model.Using_Framwork" required autocomplete="off" /></td>
+        </tr>
+        <tr>
+            <th><label asp-for="@Model.Using_Database"></label></th>
+            <th><i class="bi bi-chevron-double-right"></i></th>
+            <td><input class="project_input" asp-for="@Model.Using_Database" required autocomplete="off" /></td>
+        </tr>
+        <tr>
+            <th><label asp-for="@Model.Starting_Date"></label></th>
+            <th><i class="bi bi-chevron-double-right"></i></th>
+            <td><input class="project_input" asp-for="@Model.Starting_Date" required autocomplete="off" /></td>
+        </tr>
+        <tr>
+            <th><label asp-for="@Model.Ending_Date"></label></th>
+            <th><i class="bi bi-chevron-double-right"></i></th>
+            <td><input class="project_input" asp-for="@Model.Ending_Date" required autocomplete="off" /></td>
+        </tr>
+        <tr style="position:relative">
+            <th><label asp-for="@Model.Project_Details" class="project_detail_heading_top"></label></th>
+            <th><span><i class="bi bi-chevron-double-right"></i></span></th>
+            <td> <textarea class="project_input" id="Textarea_project" asp-for="@Model.Project_Details" style="resize:none;border:1px solid orange; margin-top:5px; padding:10px; " required> </textarea></td>
+
+        </tr>
+
+        <tr class="buttons" style="height:100px;">
+            <td colspan="3" style=" height:100%;"><button class="Update_data_button" asp-controller="Admin" asp-action="Update_Project">Update</button></td>
+        </tr>
+        </form>
+    </table>
+    <div class="project_logo_updatepage">
+        <img src="@Model.Project_LOGO" alt="Image has corrupted" style="height:100%; width:100%;" />
+    </div>
+    <div id="imageBox" class="image-box_update_page">
+    </div>
+</div>
+
+<script>
+    document.getElementById('imageInput').addEventListener('change', function (event) {
+        const imageBox = document.getElementById('imageBox');
+        const files = event.target.files;
+
+        if (files && files[0]) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+
+                // Remove previous content
+                while (imageBox.firstChild) {
+                    imageBox.removeChild(imageBox.firstChild);
+                }
+
+                imageBox.appendChild(img);
+            }
+
+            reader.readAsDataURL(files[0]);
+        } else {
+            // Handle the case when no file is selected
+            const p = document.createElement('p');
+            p.textContent = ' ';
+            imageBox.innerHTML = ''; // Clear previous content
+            imageBox.appendChild(p);
+        }
+    });
+</script>
+
+

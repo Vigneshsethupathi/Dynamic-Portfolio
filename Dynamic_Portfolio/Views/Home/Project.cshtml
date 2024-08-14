@@ -1,0 +1,138 @@
+﻿@model IEnumerable<Portfolio.Models.Project>
+
+
+<div class="Main_Project_Div">
+    <div class="Project_Guid">
+            <div class="container">
+            <br>
+          
+                <h2 class="display-6">Your Project's here..!</h2>
+           
+                <p>Your projects are also listed here. If you want to see the details, click on "More Details". Each project includes a comprehensive overview of its goals, progress, and key milestones. By clicking on "More Details," you can access in-depth information, including timelines, team members involved, and any relevant documentation. This feature allows you to stay informed and up-to-date with the latest developments in your projects. Additionally, you can provide feedback or request updates directly through the project page.</p>
+                <p><a class="Project_Guid_Button" href="#" role="button">Learn more &raquo;</a></p>
+            </div>
+        
+
+    </div> <br>
+    @if (Model.Count() > 0)
+            
+    {
+        foreach (var item in Model)
+    {
+            int index = Model.ToList().IndexOf(item) + 1;
+            <div class="@(index % 2 == 1 ? "odd-project" : "even-project")">
+          
+     @{
+   
+            var languages = item.Using_Languages.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+            var details = item.Project_Details;
+            var sentences = details.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+            var initialSentences = string.Join(".", sentences.Take(3)) + (sentences.Length > 3 ? "." : "");
+            var remainingSentences = sentences.Length > 3 ? string.Join(".", sentences.Skip(3)) + "." : "";}
+
+
+                <div class="@(index % 2 == 1 ? "odd_project_content" : "even_project_content")">
+                    <h2>
+
+                        @index.  @item.Project_Tittle ...!
+                    </h2>
+                    <hr>
+                    <span style="text-decoration:underline; font-size:20px;" >Project Information</span>
+                    <div class="Project_Paragraph">
+                        <p id="initialText_@item.Id">@initialSentences</p>
+                        <div id="remainingText_@item.Id" style="display: none; ">
+                            <div class="main_Project_minmax_div">
+                            <div class="image_div_main">
+                                <label style="text-decoration:underline; font-size:20px;">figure:1 Sample output picture</label><br>
+                                <div class="project_image_box" >
+                                    <img src="@item.Project_LOGO" />  <br>
+                                </div><br>
+                                <p>This Project Has Completed Date on <b>@item.Starting_Date</b>  To <b>@item.Ending_Date </b> </p>
+                            </div>
+                            <div class="right-side-table">
+                                <table>
+                                   
+                                    <tr>
+                                        <th>Domain Name</th>
+                                        <th><i class="fa-solid fa-blog fa-bounce"></i></th>
+                                        <td>@item.Domain_Name</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Using Language's</th>
+                                        <th><i class="fa-brands fa-python fa-bounce"></i></th>
+                                        <td>
+                                            <ul class="list-margin mt-2">
+                                                @foreach (var l in languages)
+                                                {
+                                                    <li>@l.Trim()</li>
+
+                                                } 
+                                            </ul>
+                                        </td>
+                                    </tr> 
+                                    <tr>
+                                        <th>Using Framework</th>
+                                        <th><i class="fa-brands fa-phoenix-framework fa-bounce"></i></th>
+                                         <td>@item.Using_Framwork</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Using Database</th>
+                                        <th><i class="fa-solid fa-database fa-bounce"></i></th>
+                                         <td>@item.Using_Database</td>
+                                    </tr>
+
+                                    
+                                </table>
+                               </div>
+                             </div>
+                            <p>@remainingSentences</p>
+                        </div>
+                        
+                    </div>
+               @if (!string.IsNullOrEmpty(remainingSentences))
+                    { <br>
+                        <p style="text-align:center;">
+                            <button class="btn btn-secondary" onclick="showMore(@item.Id)" id="max&min_button"><b>&laquo;</b> Show More <b>&raquo;</b></button>
+
+                        </p>}
+                    
+                
+          
+                </div>
+
+            </div>    <hr>
+        }
+    }
+    else
+    {
+        <div class="no_records_alert">
+            <div class ="i_main_div"><div><i class="bi bi-emoji-astonished-fill fa-fade"> </i></div><span></span></div>
+           <hr>No Records Found!...
+        </div>
+    }
+</div>
+@section Scripts {
+    <script>
+        function showMore(id) {
+            var remainingText = document.getElementById('remainingText_' + id);
+            var button = document.querySelector(`button[onclick='showMore(${id})']`);
+            var Show_balance = document.getElementById('show_project_balance');
+
+            if (remainingText.style.display === 'block') {
+                remainingText.style.display = 'none';
+                button.innerHTML = '&laquo; Show More &raquo;'; 
+                Show_balance.style.display = "none"
+            } else {
+                remainingText.style.display = 'block';
+                button.innerHTML = '&raquo; Show Less &laquo;'; 
+                Show_balance.style.display = "revert"
+            }
+
+
+        }
+
+   
+   
+    </script>
+}

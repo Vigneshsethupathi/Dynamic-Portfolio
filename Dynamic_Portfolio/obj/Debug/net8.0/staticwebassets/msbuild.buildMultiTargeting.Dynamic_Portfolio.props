@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Dynamic_Portfolio.props" />
+</Project>

@@ -1,0 +1,198 @@
+﻿@using Portfolio.Models
+@model Skills
+<div class="Project_MainDiv">
+    <div class ="Create_Skills_Div">
+        <div class="animated-text">
+            <span>W</span><span>e</span><span>l</span><span>c</span><span>o</span><span>m</span><span>e</span>
+            <span> </span><span>t</span><span>o </span><span> </span> <span> s</span><span>k</span><span>i</span><span>l</span><span>l</span><span>s</span>
+            <span> </span><span>S</span><span>e</span><span>l</span><span>e</span><span>c</span><span>t</span><span>i</span><span>o</span><span>n</span><span>.</span><span>.</span><span>.</span><span>!</span>
+        </div>
+        <table class="Create_Skills_table">
+        <form id="skillsForm">
+            <tr>
+                <td style="text-align:left;">
+                    1.<label asp-for="@Model.Programming_skills" ></label>
+                </td>
+                <td style="font-weight:700;font-size:23px;">:</td>
+                <td style="position:relative; text-align:left; align-content:center;">
+                    <input id="select1" type="text" placeholder=" Choose Your Skills" style="border-radius:5px;width:250px; margin-left:20px;margin-top:-14px; position:absolute;height:30px;" />
+                        
+                    <select class="select_Skills" id="skills" multiple size="1" onchange="handleSelection()">
+                        <option value="Python">Python</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="Java">Java</option>
+                        <option value="C++">C++</option>
+                        <option value="C#">C#</option>
+                        <option value="PHP">PHP</option>
+                        <option value="TypeScript">TypeScript</option>
+                        <option value="Swift">Swift</option>
+                        <option value="Kotlin">Kotlin</option>
+                        <option value="Go">Go (Golang)</option>
+                        <option value="Ruby">Ruby</option>
+                        <option value="SQL">SQL</option>
+                        <option value="R">R</option>
+                        <option value="Shell">Shell scripting (Bash)</option>
+                        <option value="Scala">Scala</option>
+                        <option value="Perl">Perl</option>
+                        <option value="Lua">Lua</option>
+                        <option value="Assembly">Assembly Language</option>
+                        <option value="MATLAB">MATLAB</option>
+                        <option value="Haskell">Haskell</option>
+                        <option value="Rust">Rust</option>
+                        <option value="Dart">Dart</option>
+                        <option value="Swift">Swift</option>
+                        <option value="Objective-C">Objective-C</option>
+                        <option value="VB.NET">VB.NET</option>
+                        <option value="Groovy">Groovy</option>
+                        <option value="Clojure">Clojure</option>
+                        <option value="Erlang">Erlang</option>
+                        <option value="Visual Basic">Visual Basic</option>
+                        <option value="Julia">Julia</option>
+                        <option value="F#">F#</option>
+                        <option value="Delphi">Delphi</option>
+                        <option value="PowerShell">PowerShell</option>
+                        <option value="Ada">Ada</option>
+                        <option value="Scheme">Scheme</option>
+                        <option value="Prolog">Prolog</option>
+                        <option value="D">D</option>
+                        <option value="COBOL">COBOL</option>
+                        <option value="Fortran">Fortran</option>
+                        <option value="Lisp">Lisp</option>
+                        <option value="Tcl">Tcl</option>
+                        <option value="Smalltalk">Smalltalk</option>
+                        <option value="Elixir">Elixir</option>
+                        <option value="Django">Django (Python framework)</option>
+                        <option value="React">React (JavaScript library)</option>
+                        <option value="Angular">Angular (JavaScript framework)</option>
+                        <option value="Spring">Spring (Java framework)</option>
+                        <option value="Node.js">Node.js (JavaScript runtime)</option>
+                        <option value="Ruby on Rails">Ruby on Rails (Ruby framework)</option>
+                        <option value="ASP.NET">ASP.NET (C# framework)</option>
+                        <option value="Laravel">Laravel (PHP framework)</option>
+                        <option value="Vue.js">Vue.js (JavaScript framework)</option>
+                        <option value="TensorFlow">TensorFlow (Python library)</option>
+                        <option value="PyTorch">PyTorch (Python library)</option>
+                        <option value="NumPy">NumPy (Python library)</option>
+                        <option value="Pandas">Pandas (Python library)</option>
+                        <option value="Spark">Spark (Java/Scala library)</option>
+                        <option value="Hibernate">Hibernate (Java library)</option>
+                        <option value="Express.js">Express.js (Node.js framework)</option>
+                        <option value="Flask">Flask (Python framework)</option>
+                        <option value="Spring Boot">Spring Boot (Java framework)</option>
+                        <option value="Play Framework">Play Framework (Scala framework)</option>
+                        <option value="Phoenix">Phoenix (Elixir framework)</option>
+                        <option value="Symfony">Symfony (PHP framework)</option>
+                        <option value="CodeIgniter">CodeIgniter (PHP framework)</option>
+                        <option value="CakePHP">CakePHP (PHP framework)</option>
+                        <option value="Zend Framework">Zend Framework (PHP framework)</option>
+                        <option value="Meteor">Meteor (JavaScript framework)</option>
+                        <option value="Ember.js">Ember.js (JavaScript framework)</option>
+                        <option value="Backbone.js">Backbone.js (JavaScript library)</option>
+                        <option value="Knockout.js">Knockout.js (JavaScript library)</option>
+                        <option value="Redux">Redux (JavaScript library)</option>
+                        <option value="RxJS">RxJS (JavaScript library)</option>
+                        <option value="jQuery">jQuery (JavaScript library)</option>
+                        <option value="Bootstrap">Bootstrap (CSS framework)</option>
+                        <option value="Sass">Sass (CSS extension)</option>
+                        <option value="Less">Less (CSS extension)</option>
+                        <option value="Tailwind CSS">Tailwind CSS (CSS framework)</option>
+                        <option value="Materialize">Materialize (CSS framework)</option>
+                        <option value="Foundation">Foundation (CSS framework)</option>
+                        <option value="Bulma">Bulma (CSS framework)</option>
+                        <option value="Ant Design">Ant Design (React UI library)</option>
+                        <option value="Material-UI">Material-UI (React UI library)</option>
+                        <option value="Semantic UI">Semantic UI (CSS framework)</option>
+                        <option value="UIKit">UIKit (Swift framework)</option>
+                        <option value="Core Data">Core Data (Swift framework)</option>
+                        <option value="Hibernate">Hibernate (Java library)</option>
+                        <option value="JUnit">JUnit (Java testing framework)</option>
+                        <option value="Selenium">Selenium (test automation tool)</option>
+                        <option value="JUnit">JUnit (Java testing framework)</option>
+                        <option value="JUnit">JUnit (Java testing framework)</option>
+                        <option value="JUnit">JUnit (Java testing framework)</option>
+                        
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">
+                    2.<label asp-for="@Model.Programming_skills"></label>
+                </td>
+                <td style="font-weight:700; font-size:23px;">:</td>
+                <td>
+                    <input asp-for="@Model.Programming_skills"/>
+                </td>
+            </tr>
+         
+        
+            
+        </form>
+   </table>
+        <div class="selected_Items_skills">
+            <label>Programming Skills</label>
+            <div class="selected_Programming_Skills">
+            <ol id="skillsList"></ol>
+            </div>
+   </div>
+    </div>
+    <script>
+        function handleSelection() {
+            var skillsSelect = document.getElementById("skills");
+            if (skillsSelect.value === "") {
+                skillsSelect.value = null; // Reset selection if the heading is selected
+            }
+        }
+    </script>
+
+    <script>
+        document.getElementById('skills').addEventListener('change', function (event) {
+            const selectedOption = event.target.selectedOptions[0];
+            const skillsList = document.getElementById('skillsList');
+            const existingSkills = Array.from(skillsList.children).map(li => li.textContent.replace('Remove', '').trim());
+
+            // Append the new skill only if it is not already in the list
+            if (!existingSkills.includes(selectedOption.value)) {
+                const li = document.createElement('li');
+                li.className = 'skill-item';
+                li.textContent = selectedOption.value;
+
+                const removeButton = document.createElement('button');
+              
+                removeButton.textContent = 'x';
+                removeButton.classList.add("Deselect_Skills");
+                removeButton.addEventListener('click', function () {
+
+                    skillsList.removeChild(li);
+                });
+
+                li.appendChild(removeButton);
+                skillsList.appendChild(li);
+            }
+        });
+
+
+
+        // this code has skills option expanded and collapsed
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const select1 = document.getElementById('select1');
+            const select2 = document.getElementById('skills');
+
+            select1.addEventListener('click', () => {
+                select1.style.visibility = 'hidden';
+                select2.style.visibility = 'visible';
+                select2.focus();
+            });
+
+            select2.addEventListener('blur', () => {
+                select2.style.visibility = 'hidden';
+                select1.style.visibility = 'visible';
+            });
+        });
+
+    </script>
+
+
+</div>
+
+
