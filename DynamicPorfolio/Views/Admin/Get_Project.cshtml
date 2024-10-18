@@ -1,0 +1,78 @@
+﻿@using DynamicPortfolio.Models
+@model Project
+
+@{
+    // Split the Using_Languages string by commas
+    var languages = Model.UsingLanguages.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+}
+
+<div class="Get_Project_MainDiv">
+    <table class="get_table">
+
+        <tbody>
+            <tr>
+                <td style="width:100px;" class="project_Titles">Project Title</td>
+                <td class="project_Titles" style="width: 15px; text-align:center;"><i class="bi bi-chevron-double-right"></i></td>
+                <td style="width:200px;"><label style="margin-left:30px;">@Model.ProjectTittle</label> </td>
+            </tr>
+            <tr>
+                <td style="width:100px;" class="project_Titles">Domain Name</td>
+                <td class="project_Titles" style="width: 15px; text-align:center;"><i class="bi bi-chevron-double-right"></i></td>
+                <td style="width:200px;"><label style="margin-left:30px;">@Model.DomainName</label></td>
+            </tr>
+            <tr>
+                <td style="width:100px;" class="project_Titles align-text-top">Using languages</td>
+                <td class="project_Titles align-text-top" style="width: 15px; text-align:center;"> <i class="bi bi-chevron-double-right"></i> </td>
+                <td style="width:200px;">
+                    <label style="margin-left:15px; display:flex; ">
+                        <ul class="list-margin mt-2">
+                            @foreach (var item in languages)
+                            {
+                                <li>@item.Trim()</li>
+
+                            }
+                        </ul>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:100px;" class="project_Titles">Using Framework</td>
+                <td class="project_Titles" style=" width: 15px; text-align:center;"><i class="bi bi-chevron-double-right"></i></td>
+                <td style="width:200px;"><label style="margin-left:30px;">@Model.UsingFramwork</label></td>
+            </tr>
+            <tr>
+                <td style="width:100px;" class="project_Titles">Using Database</td>
+                <td class="project_Titles" style="width: 15px; text-align:center;"><i class="bi bi-chevron-double-right"></i></td>
+                <td style="width:200px;"><label style="margin-left:30px;">@Model.UsingDatabase</label></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="project_date ">
+        <table>
+            <thead>
+                <tr>
+                    <td style=" border-bottom:1px solid white"><span style="text-shadow: 0px 0px 5px blue;color: white;text-align:center;align-content:end; border-top:none; border-left:none; border-right:none;margin-right:10px; ">Starting Date</span></td>
+                    <td style=" border-bottom:1px solid white"><span style="text-shadow: 0px 0px 5px blue;color: white;text-align:bottom;align-content:end; border-top:none; border-left:none; border-right:none; margin-left:10px;">Ending Date</span> </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><label style="font-size:15px; letter-spacing:2px; margin-left:10px;">@Model.StartingDate</label></td>
+                    <td><label style="font-size:15px; letter-spacing:2px; margin-left:10px;">@Model.EndingDate </label></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="project-logo_size">
+            <img src="@Model.ProjectLogo" alt="Did not Show Image" style="height:100%; width:100%;" />
+        </div>
+    </div>
+    <div class="project_details" style="overflow:hidden;">
+        <br>
+        <label class="project_Titles" style="text-decoration:underline">Details : </label>
+        <br><br><p>@Model.ProjectDetails </p>
+
+    </div>
+</div>
+
+

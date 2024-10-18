@@ -1,0 +1,173 @@
+﻿    @using DynamicPortfolio.Models
+@model User
+@{
+
+    ViewData["Title"] = "Home Page";
+}
+<div class="admin-access">
+    @if (TempData.Peek("IsLoggedIn") != null)
+    {
+    <div class="mebutton_Main">
+       <button class="me_button"><i class="bi bi-person-circle"></i> Me </button>
+            <div class="me_button_Content">
+                <div class="Mecontent" id="Mecontent">
+                    <ul>
+                        <li>
+                            <a asp-controller="Admin" asp-action="Intro_site"> <i class="bi bi-pencil-square"></i> Edit Your Profile</a><br>
+                        </li>
+                        <li>
+                            <a style=" pointer-events: none; color:white; cursor: not-allowed;"><i class="bi bi-envelope-at"></i> @TempData.Peek("UserEmailId")</a><br>
+                        </li>
+                        <li><hr style="color:white;"></li>
+                        <li>
+                            <a asp-controller="Home" asp-action="Logout"><i class="bi bi-box-arrow-left"></i> Sign-Out</a>
+                        </li>
+                    </ul>
+                  </div>
+      </div> 
+    </div>
+}
+    else
+    {
+        <a class="register_email" id="Register_BTN" href="#"><i class="bi bi-box-arrow-in-left"></i> Sign-In</a>
+    }
+</div>
+<div class="main_div">
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2><b style="color:red; text-shadow:0px 0px 2px red;">Login</b> E-mail Address</h2>
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+            {
+
+                <input type="email" name="email" asp-for="@Model.Email" placeholder="Enter your Email address" required /> <br>
+                <input type="password" name="password" asp-for="@Model.Password" placeholder="Enter your Password" required /> <br>
+                <div class="email_button_access">
+                    <div style="text-align:left;"><a href="#" id="create-email">Register your email ?</a> <br> <a href="#">forgot password</a></div>
+                    <button type="submit" asp-controller="Home" asp-action="Login"> Sign In Now </button>
+                </div>
+
+            }
+        </div>
+
+    </div>
+
+    <div id="Register_page" class="email-main-div">
+        <div class="register-email-page">
+            <span id="register_page_close" class="close">&times;</span>
+            <h2><b style="color:red; text-shadow:0px 0px 2px red;">Register</b> E-mail Address</h2>
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+            {
+                <input type="email" name="email" asp-for="@Model.Email" placeholder="Email your address" required /> <br>
+                <input type="password" name="password" asp-for="@Model.Password" placeholder="Password" required /> <br>
+                <input type="password" name="Confirm_password" asp-for="@Model.Password" placeholder="Confirm Password" required /> <br>
+                <button type="submit" asp-controller="Home" asp-action="Email_register"> Register Now </button>
+            }
+        </div>
+    </div>
+
+
+    <div class="search_div">
+        <form class="search_box">
+            <input class="form-control me-2" style="background-color:white;"type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+    <h1 class="heading"> Welcome To my Site...!</h1>
+    <div class="container_div">
+        <div class="col-left">
+            Welcome to My Portfolio showcases a range of projects, each demonstrating my commitment to excellence and creativity. Whether it's designing captivating user interfaces, developing robust software solutions, or crafting compelling marketing campaigns, I thrive on turning ideas into reality. I believe in the power of interdisciplinary collaboration, bringing together experts from different fields to tackle complex challenges.
+        </div>
+        <div class="col-right">
+            <label title="click here to Download">Everyone can download my Resume.</label><br>
+            <a href="~/Resume/Vignesh_Resume.pdf" download="Vignesh_Resume.pdf">
+                <input type="button" class="CV-button" title="Click here to download" value="Download CV">
+            </a>
+        </div>
+    </div>
+    <div class="Career">
+        <div class="career_Logo"><i class="fa-solid fa-gear fa-spin" id="career_Logo_rotate"></i><i class="fa-solid fa-gear " id="B_gear"></i></div>
+        <div class="career_details">
+            <p>
+                aurthe de afc  mtgal
+                Choosing a career involves assessing your interests, strengths, and values to find a path that aligns with your goals and provides long-term satisfaction.
+                Gaining relevant education and training is crucial in preparing for a career, as it equips you with the necessary knowledge and skills to excel in your chosen field.
+                Networking with professionals, seeking mentorship, and building a strong professional presence can significantly enhance your career opportunities and advancement.
+                Adaptability and continuous learning are key to career success, as industries evolve and new technologies and methodologies emerge.
+            </p>
+
+        </div>
+    </div>
+    <div class="LapCare">
+        <p class="LapCare_details">
+            At LaptopCare Solutions, we specialize in both hardware and software installation and repair services, ensuring comprehensive support for all your laptop needs. Our experienced technicians are adept at handling various hardware upgrades, replacements, and installations with precision and efficiency. Additionally, we offer expert troubleshooting and repair services for software issues, ensuring your laptop runs smoothly and securely. We prioritize customer satisfaction by providing transparent communication, reliable turnaround times, and competitive pricing. Count on LaptopCare Solutions to deliver reliable solutions that optimize your laptop's performance and longevity.
+        </p>
+        <div class="lapCare_Logo"><i class="fa-solid fa-screwdriver-wrench" id="Lapcare_Logo_anim"></i></div>
+
+    </div>
+    <div class="Chip">
+        <div class="Chip_Logo"><div><i class="bi bi-cpu" id="career_Logo_rotate"></i></div></div>
+        <p class="Chip_details">
+            Programming the BIOS in a laptop involves flashing the firmware, which is the low-level software that initializes and tests hardware components during boot-up. Hardware tracing during BIOS programming helps diagnose issues by monitoring signals and data flows within the motherboard. Replacing BIOS chips might be necessary if the firmware is corrupted and cannot be reprogrammed through standard methods. It requires precision soldering and a compatible replacement chip to ensure the laptop's functionality. Proper handling and static precautions are essential during hardware replacement to avoid damaging sensitive electronic components.
+        </p>
+    </div>
+</div>
+
+
+<script>
+    var Mecontent = document.getElementById("Mecontent");
+    var contentMainDiv = document.querySelector(".me_button_Content");
+    var isDropdownVisible = false;
+    var isAnimating = false;  // Flag to track if animation is in progress
+
+    document.querySelector(".me_button").addEventListener("click", function (event) {
+        event.stopPropagation(); // Prevent click from propagating to the document
+
+        // Prevent toggling if an animation is currently in progress
+        if (isAnimating) return;
+
+        this.classList.toggle("Rotate");
+
+        if (isDropdownVisible) {
+            closeDropdown();
+        } else {
+            openDropdown();
+        }
+
+        isDropdownVisible = !isDropdownVisible;
+    });
+
+    function openDropdown() {
+        isAnimating = true; // Animation starts
+        Mecontent.style.display = 'block';
+        Mecontent.style.animation = "dropdownME 1s ease-in forwards";
+
+        // Mark animation as complete after 1 second (duration of animation)
+        setTimeout(() => {
+            isAnimating = false; // Animation ends
+        }, 1000);
+    }
+
+    function closeDropdown() {
+        isAnimating = true; // Animation starts
+        Mecontent.style.animation = "dropdownMeReverse 1s ease-in forwards";
+
+        setTimeout(() => {
+            Mecontent.style.display = 'none';
+            isAnimating = false; // Animation ends
+        }, 1000);
+    }
+
+    // Close the dropdown if a click is detected outside the dropdown area
+    document.addEventListener("click", function (event) {
+        var button = document.querySelector(".me_button");
+
+        if (!Mecontent.contains(event.target) && !button.contains(event.target) && isDropdownVisible && !isAnimating) {
+            closeDropdown();
+            button.classList.remove("Rotate");
+            isDropdownVisible = false;
+        }
+    });
+
+</script>

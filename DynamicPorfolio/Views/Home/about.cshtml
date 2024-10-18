@@ -1,0 +1,79 @@
+﻿@using DynamicPortfolio.Models
+@model List<AboutMe>
+
+
+
+@if(Model != null && Model.Count > 0)
+{
+    var AboutMe_Selected = Model.FirstOrDefault();
+
+    <header class="unique-header">
+        <div class="container">
+            <img src="your-photo.jpg" alt="Your Name" class="profile-photo">
+            <h1>@AboutMe_Selected.Name</h1>
+            <p>Software Developer | Web Enthusiast | Lifelong Learner</p>
+        </div>
+    </header>
+
+    <!-- About Me Section -->
+    <section class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>
+                Hi, I’m <strong>Your Name</strong>, a passionate software developer with a focus on building engaging, high-performance websites and web applications.
+                I have a strong background in [Your Field] and have worked on several projects using technologies like [Relevant Technologies].
+                My mission is to continually learn and grow as a developer while contributing to innovative projects.
+            </p>
+        </div>
+    </section>
+
+    <!-- Personal Details Section -->
+    <section class="details">
+        <div class="container">
+            <div class="details-grid">
+                <div class="detail-box">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Experience</h3>
+                    <p>5+ years in web development, with expertise in ASP.NET Core, JavaScript, and database management.</p>
+                </div>
+                <div class="detail-box">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Education</h3>
+                    <p>Bachelor's in Computer Science from XYZ University, 2015-2019</p>
+                </div>
+                <div class="detail-box">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p>New York, USA</p>
+                </div>
+                <div class="detail-box">
+                    <i class="fas fa-star"></i>
+                    <h3>Hobbies</h3>
+                    <p>Photography, coding, hiking, and playing chess</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <p>If you'd like to get in touch, feel free to reach out via <a href="mailto:youremail@example.com">email</a> or connect with me on <a href="https://linkedin.com/in/yourlinkedinprofile">LinkedIn</a>.</p>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="unique-footer">
+        <div class="container">
+            <p>&copy; 2024 Your Name. All rights reserved.</p>
+        </div>
+    </footer>
+}
+else
+{
+    <div class="no_records_alert">
+        <div class="i_main_div"><div><i class="bi bi-emoji-astonished-fill fa-fade"> </i></div><span></span></div>
+        <hr>No Records Found!...
+    </div>
+}

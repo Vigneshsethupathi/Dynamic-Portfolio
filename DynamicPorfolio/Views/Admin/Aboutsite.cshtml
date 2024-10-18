@@ -1,0 +1,327 @@
+﻿@using DynamicPortfolio.DTO_Models
+@model AboutMe
+
+<div class="Edit_main_div_project">
+
+    <div class="Edit_menu_project">
+        <a style="background-color:transparent; color:white; text-shadow:-2px 0px 3px black;" asp-controller="Admin" asp-action="Edit_Site"><button>Project's</button></a>
+       <br>
+        <a asp-controller="Admin" asp-action="Skills_site"> <button> Skill's</button></a><br>
+        <a asp-controller="Admin" asp-action="Edit_Site"><button>Contact</button></a><br>
+        <a asp-controller="Admin" asp-action="Aboutsite"> <button style="background-color: orange; color:black;">About</button></a>  <span class="hand"><i class="fa-solid fa-hand-point-right"></i></span><br>
+        
+        <div class="mini_Detail_box_Project">
+            <p>Clicking on the headings "Project," "Skills," "Contact," and "About" opens new tabs with relevant information, offering a comprehensive overview. These tabs provide insights into projects, expertise, and contact details, fostering seamless interaction and understanding. Users can explore project achievements, skill proficiency, and ways to get in touch, enhancing engagement and communication.</p>
+        </div>
+    </div>
+   
+    <div class="Edit_Contents" id="edit_page">
+       
+        <div class="Project_Edit_Show">
+            
+            @if (Model.Name != null)
+            {
+                <div class="aboutEditButton">
+                    <a href="#" id="AboutMe_Edit_Button" style="background-color:green; color:white;"><i class="fa-regular fa-pen-to-square fa-bounce"></i> Edit</a>
+                </div>
+                <div class="project_details_page">
+                    <div class="Aboutdetails-container" >
+                        <h2 class="details-title1">Personal Details</h2>
+                        <ul class="details-list" >
+                            <li><span class="detail-label">Name :</span>@Model.Name</li>
+                            <li><span class="detail-label">Father's Name:</span>@Model.FatherName </li>
+                            <li><span class="detail-label">Date of Birth:</span>@Model.DateOfBirth </li>
+                            <li><span class="detail-label">Education:</span>@Model.Education</li>
+                            <li><span class="detail-label">Nationality:</span>@Model.Nationality</li>
+                            <li><span class="detail-label">Profession:</span>@Model.Profession </li>
+                            <li><span class="detail-label">Years of Experience:</span>@Model.YearsOfExperience</li>
+                            <li><span class="detail-label">Languages Spoken:</span>@Model.LanguagesSpoken</li>
+                            <li><span class="detail-label">Hobbies:</span>@Model.Hobbies</li>
+                            <li><span class="detail-label">Current Role:</span> @Model.CurrentRole</li>
+                            <li><span class="detail-label">Career Ambition:</span>@Model.CareerAmbition </li>
+                            <li><span class="detail-label">Mobile Number:</span>@Model.MobileNumber</li>
+                            <li>
+                                <span class="detail-label">Certifications:</span>@Model.Certifications
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            }
+            else
+            {
+                <div class="aboutEditButton">
+                    <a href="#" id="AboutMe_create_Button" style="background-color:green; color:white; padding:5px 2px"><i class="fa-regular fa-pen-to-square fa-bounce"></i> Create</a>
+                </div>
+                <div class="Aboutdetails-container">
+                    <h2 class="details-title">Personal Details</h2>
+                    <ul class="details-list">
+                        <li><span class="detail-label"> <i class="bi bi-person form-control-icon fa-bounce"> <br> Name:</span><span class="detail-content"> John</span></li>
+                        <li><span class="detail-label">Father's Name:</span><span class="detail-content">Richard Doe</span> </li>
+                        <li><span class="detail-label">Date of Birth:</span> <span class="detail-content">January 1, 1990</span></li>
+                        <li><span class="detail-label">Education:</span><span class="detail-content"> Bachelor's in Computer Science</span></li>
+                        <li><span class="detail-label">Nationality:</span> <span class="detail-content">American</span></li>
+                        <li><span class="detail-label">Profession:</span> <span class="detail-content">Software Engineer</span></li>
+                        <li><span class="detail-label">Years of Experience:</span><span class="detail-content">5</span> </li>
+                        <li><span class="detail-label">Languages Spoken:</span> <span class="detail-content">English, Spanish</span></li>
+                        <li><span class="detail-label">Hobbies:</span> <span class="detail-content">Reading, Hiking</span></li>
+                        <li><span class="detail-label">Current Role:</span> <span class="detail-content">Senior Developer</span></li>
+                        <li><span class="detail-label">Career Ambition:</span><span class="detail-content">CTO</span> </li>
+                        <li><span class="detail-label">Mobile Number:</span><span class="detail-content"> 123-456-7890</span></li>
+                        <li><span class="detail-label">Certifications:</span> <span class="detail-content">PMP, AWS Certified Developer</span></li>
+                    </ul>
+                </div>
+
+            }     
+
+                  
+
+            <div id="AboutEditForm" class="project_details_page">
+               <form asp-action="Aboutsite" class="AboutForm" method="post">
+                <div class="form-group">
+                    <i class="bi bi-person form-control-icon fa-bounce"></i>
+                            <label asp-for="@Model.Name">Full Name</label><br>
+                            <input asp-for="@Model.Name" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                    <i class="bi bi-person-vcard form-control-icon"></i>
+                            <label asp-for="@Model.FatherName">Father Name</label><br>
+                            <input asp-for="@Model.FatherName" class="form-control" required />
+                </div>
+                
+                <div class="form-group">
+                    <i class="bi bi-calendar form-control-icon"></i>
+                            <label asp-for="@Model.DateOfBirth">Date of Birth</label><br>
+                            <input asp-for="@Model.DateOfBirth" class="form-control" required type="date" />
+                </div>
+
+                <div class="form-group">
+                    <i class="bi bi-book form-control-icon"></i>
+                            <label asp-for="@Model.Education">Education's</label><br>
+                            <input asp-for="@Model.Education" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                    <i class="bi bi-globe form-control-icon"></i>
+                            <label asp-for="@Model.Nationality">Nationality</label><br>
+                            <input asp-for="@Model.Nationality" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                    <i class="bi bi-briefcase form-control-icon"></i>
+                            <label asp-for="@Model.Profession">Profession</label><br>
+                            <input asp-for="@Model.Profession" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                    <i class="bi bi-person-badge form-control-icon"></i>
+                            <label asp-for="@Model.CurrentRole">Current Role</label><br>
+                            <input asp-for="@Model.CurrentRole" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                    <i class="bi bi-clock form-control-icon"></i>
+                            <label asp-for="@Model.YearsOfExperience">Years of Experience</label><br>
+                            <input asp-for="@Model.YearsOfExperience" type="number" step="0.01" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                    <i class="bi bi-chat-dots form-control-icon"></i>
+                            <label asp-for="@Model.LanguagesSpoken">Languages Spoken</label><br>
+                        <input class="form-control" type="text" value="&#9758; Select your language known &#9756;" style="text-align:center; cursor:pointer;" id="languageselectbutton" />
+                        <select id="languages" class="form-control"  multiple>
+                            <option value="English">English</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="French">French</option>
+                            <option value="Chinese">Chinese</option>
+                            <option value="German">German</option>
+                            <option value="Hindi">Hindi</option>
+                            <option value="Arabic">Arabic</option>
+                            <option value="Russian">Russian</option>
+                            <option value="Portuguese">Portuguese</option>
+                            <option value="Japanese">Japanese</option>
+                            <option value="Korean">Korean</option>
+                            <option value="Italian">Italian</option>
+                            <option value="Turkish">Turkish</option>
+                            <option value="Dutch">Dutch</option>
+                            <option value="Swedish">Swedish</option>
+                            <option value="Greek">Greek</option>
+                            <option value="Polish">Polish</option>
+                            <option value="Hebrew">Hebrew</option>
+                            <option value="Vietnamese">Vietnamese</option>
+                            <option value="Bengali">Bengali</option>
+                            <option value="Thai">Thai</option>
+                            <option value="Ukrainian">Ukrainian</option>
+                            <option value="Czech">Czech</option>
+                            <option value="Romanian">Romanian</option>
+                            <option value="Hungarian">Hungarian</option>
+                            <option value="Finnish">Finnish</option>
+                            <option value="Norwegian">Norwegian</option>
+                            <option value="Indonesian">Indonesian</option>
+                            <option value="Persian">Persian</option>
+                            <option value="Tamil">Tamil</option>
+                            <option value="Malay">Malay</option>
+                            <option value="Urdu">Urdu</option>
+                            <option value="Filipino">Filipino</option>
+                            <option value="Swahili">Swahili</option>
+                            <option value="Zulu">Zulu</option>
+                            <option value="Amharic">Amharic</option>
+                            <option value="Haitian Creole">Haitian Creole</option>
+                            <option value="Serbian">Serbian</option>
+                            <option value="Croatian">Croatian</option>
+                            <option value="Bulgarian">Bulgarian</option>
+                            <option value="Slovak">Slovak</option>
+                            <option value="Lithuanian">Lithuanian</option>
+                            <option value="Latvian">Latvian</option>
+                            <option value="Estonian">Estonian</option>
+                            <option value="Bosnian">Bosnian</option>
+                            <option value="Albanian">Albanian</option>
+                            <option value="Macedonian">Macedonian</option>
+                            <option value="Georgian">Georgian</option>
+                            <option value="Armenian">Armenian</option>
+                            <option value="Mongolian">Mongolian</option>
+                            <option value="Nepali">Nepali</option>
+                            <option value="Sinhala">Sinhala</option>
+                            <option value="Pashto">Pashto</option>
+                            <option value="Kazakh">Kazakh</option>
+                            <option value="Azerbaijani">Azerbaijani</option>
+                            <option value="Uzbek">Uzbek</option>
+                            <option value="Tajik">Tajik</option>
+
+                        </select>
+                        <div id="selected-languages" name="selectedDetailsAbout"class="selected-languages">
+                           
+
+                        </div>
+                      
+                </div>
+
+                <div class="form-group">
+                    <i class="bi bi-joystick form-control-icon"></i>
+                            <label asp-for="@Model.Hobbies">Hobbies</label><br>
+                            <input asp-for="@Model.Hobbies" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                    <i class="bi bi-bullseye form-control-icon"></i>
+                            <label asp-for="@Model.CareerAmbition">Career Ambition</label><br>
+                            <input asp-for="@Model.CareerAmbition" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                    <i class="bi bi-phone form-control-icon"></i>
+                            <label asp-for="@Model.MobileNumber">Mobile Number</label><br>
+                            <input asp-for="@Model.MobileNumber" type="tel" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                    <i class="bi bi-award form-control-icon"></i>
+                            <label asp-for="@Model.Certifications">Certifications</label><br>
+                            <input asp-for="@Model.Certifications" class="form-control" required />
+                </div>
+
+                <div class="form-group text-center AboutsubmitButton">
+                    <button id="aDeleteButton" class="btn btn-primary">Delete Record</button>
+                    <input asp-controller="Admin" asp-action="Aboutsite" style=" border:1px solid blue; width:auto;height:auto;" type="submit" value="Submit" class="btn btn-primary" />
+
+                </div>
+
+            </form>
+            </div>
+       
+            
+          
+        </div>
+
+        
+    </div>
+</div>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const languageSelect = document.getElementById('languages');
+        const selectedLanguagesInput = document.getElementById('selectedLanguages');
+        const languageselectbutton = document.getElementById('languageselectbutton');
+       
+        // Show input and hide button on focus or click
+        languageSelect.addEventListener('mouseover', function () {
+            languageselectbutton.style.display = "none";
+            languageSelect.style.display = "revert"; // Show the input
+        });
+
+        // Show input and hide button on click
+        languageselectbutton.addEventListener('click', function () {
+            languageselectbutton.style.display = "none";
+            languageSelect.style.display = "revert"; 
+        });
+
+        // hide input and hide button on click
+        languageSelect.addEventListener('mouseleave', function () {
+            languageselectbutton.style.display = "revert";
+            languageSelect.style.display = "none";
+        });
+
+      
+
+
+       
+
+        // Event listener for when the select element is focused (clicked)
+        languageSelect.addEventListener('focus', function () {
+            languageSelect.style.height = '150px'; 
+            
+        });
+
+      
+    });
+  
+
+    const selectElement = document.getElementById('languages');
+    const selectedLanguagesContainer = document.getElementById('selected-languages');
+
+    // Listen for changes in the select element
+    selectElement.addEventListener('change', function () {
+        const selectedOptions = Array.from(selectElement.selectedOptions); // Get the selected options
+
+        selectedOptions.forEach(option => {
+            // Check if the language is already selected (to avoid duplicates)
+            if (!isLanguageAlreadySelected(option.value)) {
+                addLanguage(option.value); // Add the new language
+            }
+        });
+    });
+
+    // Check if a language is already selected (to avoid duplicates)
+    function isLanguageAlreadySelected(language) {
+        const selectedItems = Array.from(selectedLanguagesContainer.getElementsByClassName('language-box'));
+        return selectedItems.some(item => item.textContent.includes(language));
+    }
+
+    // Function to add the selected language to the container
+    function addLanguage(language) {
+        const languageDiv = document.createElement('div');
+        languageDiv.className = 'language-box';
+        languageDiv.textContent = language;
+
+        // Create the "X" (remove) button
+        const removeBtn = document.createElement('button');
+        removeBtn.className = 'remove-btn';
+        removeBtn.textContent = 'x'; // This will appear as the "remove" button
+
+        // When the "X" button is clicked, remove the corresponding language
+        removeBtn.addEventListener('click', function () {
+            selectedLanguagesContainer.removeChild(languageDiv); // Remove the language box
+        });
+
+        // Append the "X" button to the language div
+        languageDiv.appendChild(removeBtn);
+
+        // Append the new language div to the selected languages container
+        selectedLanguagesContainer.appendChild(languageDiv);
+    }
+
+</script>

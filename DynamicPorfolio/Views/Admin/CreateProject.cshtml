@@ -1,0 +1,99 @@
+﻿@using DynamicPortfolio.Models
+@model Project
+<div class="Project_MainDiv">
+
+    <table class="upload_project_table">
+        <form method="post" enctype="multipart/form-data">
+        <tr>
+            <th><label asp-for="@Model.ProjectTittle"></label></th>
+            <th><i class="bi bi-chevron-double-right"></i></th>
+            <td><input class="project_input" asp-for="@Model.ProjectTittle" required autocomplete="off" /></td>
+        </tr>
+        <tr>
+            <th><label asp-for="@Model.DomainName"></label></th>
+            <th><i class="bi bi-chevron-double-right"></i></th>
+            <td><input class="project_input" asp-for="@Model.DomainName" autocomplete="off" required /></td>
+        </tr>
+        <tr style="height:100px">
+            <th><label asp-for="@Model.ProjectLogo"></label></th>
+            <th><i class="bi bi-chevron-double-right"></i></th>
+            <td><input type="file" name="files" id="imageInput" accept="image/*" autocomplete="off" class="project_input" style=" width:50%; height:40px" required></td>
+        </tr>
+        <tr>
+
+            <th><label asp-for="@Model.UsingLanguages"></label></th>
+            <th><i class="bi bi-chevron-double-right"></i></th>
+            <td><input class="project_input" asp-for="@Model.UsingLanguages" required autocomplete="off" /></td>
+        </tr>
+        <tr>
+            <th><label asp-for="@Model.UsingFramwork"></label></th>
+            <th><i class="bi bi-chevron-double-right"></i></th>
+            <td><input class="project_input" asp-for="@Model.UsingFramwork" required autocomplete="off" /></td>
+        </tr>
+        <tr>
+            <th><label asp-for="@Model.UsingDatabase"></label></th>
+            <th><i class="bi bi-chevron-double-right"></i></th>
+            <td><input class="project_input" asp-for="@Model.UsingDatabase" required autocomplete="off" /></td>
+        </tr>
+        <tr>
+            <th><label asp-for="@Model.StartingDate"></label></th>
+            <th><i class="bi bi-chevron-double-right"></i></th>
+            <td><input type="date" id="DateInputSET" name="StartingDate" class="project_input" required /></td>
+        </tr>
+        <tr>
+            <th><label asp-for="@Model.EndingDate"></label></th>
+            <th><i class="bi bi-chevron-double-right"></i></th>
+            <td>
+                <input type="date" id="DateInputSET"
+                       name="EndingDate" class="project_input" required />
+            </td>
+        </tr>
+        <tr style="position:relative">
+            <th><label asp-for="@Model.ProjectDetails" class="project_detail_heading_top"></label></th>
+            <th><span><i class="bi bi-chevron-double-right"></i></span></th>
+            <td> <textarea class="project_input" id="Textarea_project" asp-for="@Model.ProjectDetails" style="resize:none;border:1px solid orange; margin-top:5px; padding:5px; " required> </textarea></td>
+
+        </tr>
+        <tr class="buttons" style="height:100px;">
+            <td colspan="3" style=" height:100%"> <input type="reset" name="reset" class="reset_button" /><button class="project_data_button" asp-controller="Admin" asp-action="CreateProject">Submit</button></td>
+        </tr>
+        </form>
+    </table>
+
+
+    <div id="imageBox" class="image-box">
+    </div>
+
+</div>
+
+
+<script>
+    document.getElementById('imageInput').addEventListener('change', function (event) {
+        const imageBox = document.getElementById('imageBox');
+        const files = event.target.files;
+
+        if (files && files[0]) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+
+                // Remove previous content
+                while (imageBox.firstChild) {
+                    imageBox.removeChild(imageBox.firstChild);
+                }
+
+                imageBox.appendChild(img);
+            }
+
+            reader.readAsDataURL(files[0]);
+        } else {
+            // Handle the case when no file is selected
+            const p = document.createElement('p');
+            p.textContent = ' ';
+            imageBox.innerHTML = ''; // Clear previous content
+            imageBox.appendChild(p);
+        }
+    });
+</script>
